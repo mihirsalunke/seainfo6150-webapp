@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import ArticleTextToggleButton from "../ArticleTextToggleButton/ArticleTextToggleButton.jsx";
+import styles from "./ArticleListItem.module.css";
 
 const ArticleListItem = (props) => {
+
+  const [hidden, setHidden] = useState(true);
+
+  const onClick = () => {
+    setHidden(!hidden);
+  };
+
   return (
-    <li>
-      <article>
-        <h2>{props.article.title}</h2>
-        <time dateTime={props.article.timeStamp}>
+    <li className={styles.item}>
+      <article className={styles.article}>
+        <h2 className={styles.title}>{props.article.title}</h2>
+        <p className={`${hidden ? styles.hidden : "shortText"}`}>{props.article.shortText}</p>
+        <time className={`${styles.dateTime} ${hidden ? styles.hidden : ""}`.trim()} dateTime={props.article.timeStamp}>
           {props.article.displayDate}
         </time>
-        <p>{props.article.shortText}</p>
       </article>
+      <ArticleTextToggleButton buttonText={hidden ? "Show more" : "Show less"} onClick={onClick} />
     </li>
   );
 };

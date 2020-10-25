@@ -1,0 +1,8 @@
+.articleList {
+    list-style: none;
+    border: 1px dashed dimgray;
+    border-radius: 15px;
+    background-color: darkgray;
+    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.5);
+    margin: 15px;
+}
